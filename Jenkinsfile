@@ -21,7 +21,12 @@ pipeline{
         }
         stage('Integration Testing') {
             steps{
-                sh 'mvn verify -DiskUnitTests'
+                sh 'mvn verify -DiskUnitTests' 
+            }
+        }
+        stage('Maven Build'){
+            steps{
+                sh 'mvn clean install'
             }
         }
     }
