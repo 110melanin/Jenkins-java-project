@@ -4,14 +4,19 @@ pipeline{
     
     stages {
         
-        stage('Git Checkout'){
+        stage('Git Checkout') {
             
-            steps{
+            steps {
                 
-                script{
+                script {
                     
                     git branch: 'main', url: 'https://github.com/110melanin/Jenkins-java-project.git'
                 }
+            }
+        }
+        stage('Unit Testing') {
+            steps {
+                sh 'mvn test'
             }
         }
     }
