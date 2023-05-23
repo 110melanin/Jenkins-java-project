@@ -31,16 +31,16 @@ pipeline{
         }
         stage('SonarQube Code Analysis') {
             steps {
-                scripts{
+                script{
                     withSonarQubeEnv(credentialsId: 'sonar-api') {
-                    sh 'mvn clean package sonar:sonar'   
+                     sh 'mvn clean package sonar:sonar'   
                     }
                 }
             }
         }
            stage('Quality Gate Status') {
             steps{
-                scripts{
+                script{
                     waitForQualityGate abortPipeline: false, credentialsId: 'sonar-api'
                 }
             }
