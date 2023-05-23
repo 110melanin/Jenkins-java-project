@@ -47,10 +47,29 @@ pipeline{
                 script{
                   
                     waitForQualityGate abortPipeline: true, credentialsId: 'sonar-api'
-                }
-
-             }
+                } 
+           }
         }
+            stage('Nexus Artifact Uploader') {
+                steps {
+                    script{
+                        nexusArtifactUploader artifacts: 
+                        [
+                            [
+                                artifactId: 'springboot', 
+                                classifier: '', file: 'target/Uber.jar', 
+                                type: 'jar'
+                            ]
+                        ], credentialsId: 'nexuslogin',
+                           groupId: 'com.example', 
+                           nexusUrl: 'http://35.178.194.39:8081', 
+                           nexusVersion: 'nexus3', 
+                           protocol: 'http', 
+                           repository: 'jenkins-java-app', 
+                           version: '1.0.0'
+                    }
+                }
+            }
      }
  }    
 
