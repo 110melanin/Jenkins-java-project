@@ -34,9 +34,9 @@ pipeline{
                 script{
                  withSonarQubeEnv('sonarserver'){
                   sh '''mvn sonar:sonar \
-                     -Dsonar.projectKey=Jenkins-java-app1 \
-                     -Dsonar.host.url=http://3.9.181.151 \
-                     -Dsonar.login=8ef99e2e38ec5f4a7a1b27ea55a30e99cfb3b554'''
+                    -Dsonar.projectKey=Jenkins-java-app1 \
+                    -Dsonar.host.url=http://3.9.181.151 \
+                    -Dsonar.login=8ef99e2e38ec5f4a7a1b27ea55a30e99cfb3b554'''
                        }
 
                     }
