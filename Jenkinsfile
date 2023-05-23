@@ -20,11 +20,11 @@ pipeline{
             }
         }
         stage('Integration Testing') {
-            steps{
+            steps {
                 sh 'mvn verify -DiskUnitTests' 
             }
         }
-        stage('Maven Build'){
+        stage('Maven Build') {
             steps{
                 sh 'mvn clean install'
             }
@@ -33,7 +33,7 @@ pipeline{
             steps {
                 scripts{
                     withSonarQubeEnv(credentialsId: 'sonar-api') {
-                         sh 'mvn clean package sonar:sonar'   
+                    sh 'mvn clean package sonar:sonar'   
                     }
                 }
             }
