@@ -32,10 +32,12 @@ pipeline{
         stage('SonarQube Code Analysis') {
             steps {
                 script{
+                 withSonarQubeEnv('sonarserver'){
                   sh '''mvn sonar:sonar \
                      -Dsonar.projectKey=Jenkins-java-app2 \
                      -Dsonar.host.url=http://3.9.181.151 \
                      -Dsonar.login=02bf33affaf3fb30772dc319f90b0289aa3d20b7'''
+                       }
 
                     }
                 }
