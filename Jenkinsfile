@@ -46,7 +46,7 @@ pipeline{
             steps{
                 script{
                   timeout(time: 10, unit: 'MINUTES'){ 
-                    waitForQualityGate abortPipeline: false, credentialsId: 'sonar-api'
+                    waitForQualityGate abortPipeline: true, credentialsId: 'sonar-api'
                     }
 
                 }
