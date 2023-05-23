@@ -32,10 +32,11 @@ pipeline{
         stage('SonarQube Code Analysis') {
             steps {
                 script{
-                    withSonarQubeEnv(credentialsId: 'sonar-api') {
+                  sh '''mvn sonar:sonar \
+                     -Dsonar.projectKey=Jenkins-java-app2 \
+                     -Dsonar.host.url=http://13.41.224.255 \
+                     -Dsonar.login=02bf33affaf3fb30772dc319f90b0289aa3d20b7'''
 
-                     sh 'mvn clean package sonar:sonar'
-                        
                     }
                 }
             }
@@ -44,6 +45,7 @@ pipeline{
             steps{
                 script{
                     waitForQualityGate abortPipeline: false, credentialsId: 'sonar-api'
+
                 }
             }
         }
