@@ -47,11 +47,10 @@ pipeline{
             
             steps {
                 
-                  
+                     timeout(time: 10, unit: 'MINUTES') {                   
                     waitForQualityGate abortPipeline: false, credentialsId: 'sonartoken'
-                 
-            
-                   
+                     }
+                    
               }
            }
             stage('Nexus Artifact Uploader') {
