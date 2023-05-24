@@ -35,7 +35,10 @@ pipeline{
                 script{
 
                  withSonarQubeEnv(credentialsId: 'sonartoken') {
-                  sh 'mvn clean package sonar:sonar' 
+                  sh '''mvn clean package sonar:sonar
+                    -Dsonar.projectKey=Jenkins-java-app1 \
+                    -Dsonar.host.url=http://13.41.224.255 \
+                    -Dsonar.login=6c2df13cff23b3d25b5826d04e796ba99982b4a5'''
                  }
                } 
             }
