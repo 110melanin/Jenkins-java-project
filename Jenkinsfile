@@ -37,7 +37,7 @@ pipeline{
                  withSonarQubeEnv(credentialsId: 'sonartoken') {
                   sh '''mvn sonar:sonar \
                     -Dsonar.projectKey=com.example:springboot1\
-                    -Dsonar.host.url=http://3.9.181.151\
+                    -Dsonar.host.url=http://3.9.181.151:9000\
                     -Dsonar.login=6c2df13cff23b3d25b5826d04e796ba99982b4a5'''
                  }
                } 
