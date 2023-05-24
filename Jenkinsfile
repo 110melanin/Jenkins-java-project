@@ -40,13 +40,16 @@ pipeline{
                } 
             }
            stage('Quality Gate Status') {
+            
             steps {
                 script{
                   
                     waitForQualityGate abortPipeline: false, credentialsId: 'sonartoken'
-                } 
+                 
+            
+                }    
+              }
            }
-        }
             stage('Nexus Artifact Uploader') {
                 steps {
                     script{
@@ -68,6 +71,7 @@ pipeline{
                 }
             }
      }
- }    
+  }
+}     
 
 
