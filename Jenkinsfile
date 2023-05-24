@@ -36,7 +36,8 @@ pipeline{
 
                  withSonarQubeEnv(credentialsId: 'sonartoken') {
                   sh 'mvn clean package sonar:sonar' 
-                }
+                  }
+               } 
             }
            stage('Quality Gate Status') {
             steps {
