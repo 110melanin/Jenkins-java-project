@@ -33,7 +33,7 @@ pipeline{
             
             steps {
                 script{
-                 withSonarQubeEnv(credentialsId'sonartoken'){
+                 withSonarQubeEnv(credentialsId: 'sonartoken'){
                   sh '''mvn clean package sonar:sonar \
                     -Dsonar.projectKey=springboot \
                     -Dsonar.host.url=http://3.9.181.151 \
